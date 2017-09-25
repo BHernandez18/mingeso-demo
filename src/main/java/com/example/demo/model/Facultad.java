@@ -5,9 +5,11 @@
  */
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -20,20 +22,29 @@ import javax.validation.constraints.NotNull;
 @Table(name = "facultad")
 public class Facultad implements Serializable {
 
+    public Facultad() {
+    }
+
+    public Facultad(String nombre) {
+        this.nombre = nombre;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_facultad")
-    @NotNull
     private Long idFacultad;
 
     @Column(name = "nombre")
     @NotNull
     private String nombre;
+    
+    @OneToMany(mappedBy = "facultad")
+    @JsonIgnore
+    private List<Alumno> alumnos;
 
-    @ManyToMany(mappedBy = "facultades")
-    //@JsonManagedReference
-    @JsonIgnoreProperties("facultades")
-    private Set<Alumno> alumnos;
+//    @ManyToMany(mappedBy = "facultades")
+//    @JsonIgnoreProperties("facultades")
+//    private Set<Alumno> alumnos;
 
     public Long getIdFacultad() {
         return idFacultad;
@@ -51,11 +62,11 @@ public class Facultad implements Serializable {
         this.nombre = nombre;
     }
     
-    public Set<Alumno> getAlumnos() {
+    public List<Alumno> getAlumnos() {
         return alumnos;
     }
 
-    public void setAlumnos(Set<Alumno> alumnos) {
+    public void setAlumnos(List<Alumno> alumnos) {
         this.alumnos = alumnos;
     }
 

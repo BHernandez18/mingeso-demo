@@ -6,6 +6,7 @@
 package com.example.demo.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.util.Set;
@@ -23,7 +24,6 @@ public class Alumno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_alumno")
-    @NotNull
     private Long idAlumno;
 
     @Column(name = "rut")
@@ -41,18 +41,22 @@ public class Alumno implements Serializable {
     @NotNull
     private int ingreso;
 
-    @ManyToMany
-    @JoinTable(
-            name = "alumno_facultad",
-            joinColumns = {
-                @JoinColumn(name = "alumno_id", referencedColumnName = "id_alumno")},
-            inverseJoinColumns = {
-                @JoinColumn(name = "facultad_id", referencedColumnName = "id_facultad")}
-    )
-    //@JsonBackReference
-    @JsonIgnoreProperties("alumnos")
-    private Set<Facultad> facultades;
+    @ManyToOne
+    @JoinColumn(name = "facultad_id", referencedColumnName = "id_facultad")
+    @JsonIgnore
+    private Facultad facultad;
 
+//    @ManyToMany
+//    @JoinTable(
+//            name = "alumno_facultad",
+//            joinColumns = {
+//                @JoinColumn(name = "alumno_id", referencedColumnName = "id_alumno")},
+//            inverseJoinColumns = {
+//                @JoinColumn(name = "facultad_id", referencedColumnName = "id_facultad")}
+//    )
+//    @JsonIgnoreProperties("alumnos")
+//    private Set<Facultad> facultades;
+    
     public Long getIdAlumno() {
         return idAlumno;
     }
@@ -92,13 +96,21 @@ public class Alumno implements Serializable {
     public void setIngreso(int ingreso) {
         this.ingreso = ingreso;
     }
-    
-    public Set<Facultad> getFacultades() {
-        return facultades;
+
+//    public Set<Facultad> getFacultades() {
+//        return facultades;
+//    }
+//
+//    public void setFacultades(Set<Facultad> facultades) {
+//        this.facultades = facultades;
+//    }
+
+    public Facultad getFacultad() {
+        return facultad;
     }
 
-    public void setFacultades(Set<Facultad> facultades) {
-        this.facultades = facultades;
+    public void setFacultad(Facultad facultad) {
+        this.facultad = facultad;
     }
-
+        
 }

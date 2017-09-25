@@ -9,6 +9,8 @@ import com.example.demo.model.Facultad;
 import com.example.demo.repository.FacultadRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,14 +34,24 @@ public class FacultadController {
     @Autowired
     private FacultadRepository facultadRepository;
     
-    @RequestMapping(method = GET)
-    public List<Facultad> list() {
-        return facultadRepository.findAll();
+    @RequestMapping(value = "/all", method = GET)
+    public ResponseEntity<List<Facultad>> list() {
+        try {
+            List<Facultad> facultades = facultadRepository.findAll();
+            return ResponseEntity.ok(facultades);
+        } catch (ResourceNotFoundException rnfe) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
     }
     
     @RequestMapping(value = "/{id}", method = GET)
-    public Object get(@PathVariable String id) {
-        return null;
+    public ResponseEntity<Facultad> get(@PathVariable String id) {
+        try {
+            Facultad facultad = facultadRepository.findOne(Long.parseLong(id));
+            return ResponseEntity.ok(facultad);
+        } catch (ResourceNotFoundException rnfe) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
     }
     
     @RequestMapping(value = "/{id}", method = PUT)
