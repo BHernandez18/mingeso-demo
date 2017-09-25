@@ -38,7 +38,7 @@ public class AlumnoController {
 
     @Autowired
     private AlumnoRepository alumnoRepository;
-    
+
     @Autowired
     private FacultadRepository facultadRepository;
 
@@ -51,7 +51,7 @@ public class AlumnoController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
     }
-    
+
     @RequestMapping(value = "/allByFacultad/{id_facultad}", method = GET)
     public ResponseEntity<List<Alumno>> listByFacultad(@PathVariable String id_facultad) {
         try {

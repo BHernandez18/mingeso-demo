@@ -16,5 +16,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 @Transactional
 public interface FacultadRepository extends JpaRepository<Facultad, Long> {
-    
+
 }

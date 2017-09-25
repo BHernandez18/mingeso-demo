@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<div class="col-md-12">
+    <p>
+        <label>Seleccione una facultad:</label>
+        <select ng-options="facultad.idFacultad as facultad.nombre for facultad in facultades" ng-model="selectedFacultad">
+        </select>
+    </p>
+    <p>
+        <button id="addBtn" class="btn-success" ng-click="getAlumnos(selectedFacultad)">Buscar Alumnos</button>
+    </p>
+</div>
+
+<div class="container" ng-show="alumnos != null">
+    <table>
+        <thead>
+            <tr>
+                <th>RUT</th>
+                <th>Nombre</th>
+                <th>Correo Electronico</th>
+                <th>Ingreso</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="alumno in alumnos">
+                <td>{{alumno.rut}}</td>
+                <td>{{alumno.nombre}}</td>
+                <td>{{alumno.correo}}</td>
+                <td>{{alumno.ingreso}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="col-md-12">
+    <p></p>
+    <h4>{{msg}}</h4>
+</div>

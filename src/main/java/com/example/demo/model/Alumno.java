@@ -43,7 +43,6 @@ public class Alumno implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "facultad_id", referencedColumnName = "id_facultad")
-    @JsonIgnore
     private Facultad facultad;
 
 //    @ManyToMany
@@ -56,7 +55,6 @@ public class Alumno implements Serializable {
 //    )
 //    @JsonIgnoreProperties("alumnos")
 //    private Set<Facultad> facultades;
-    
     public Long getIdAlumno() {
         return idAlumno;
     }
@@ -104,7 +102,6 @@ public class Alumno implements Serializable {
 //    public void setFacultades(Set<Facultad> facultades) {
 //        this.facultades = facultades;
 //    }
-
     public Facultad getFacultad() {
         return facultad;
     }
@@ -112,5 +109,5 @@ public class Alumno implements Serializable {
     public void setFacultad(Facultad facultad) {
         this.facultad = facultad;
     }
-        
+
 }

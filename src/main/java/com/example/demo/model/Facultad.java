@@ -37,7 +37,7 @@ public class Facultad implements Serializable {
     @Column(name = "nombre")
     @NotNull
     private String nombre;
-    
+
     @OneToMany(mappedBy = "facultad")
     @JsonIgnore
     private List<Alumno> alumnos;
@@ -45,7 +45,6 @@ public class Facultad implements Serializable {
 //    @ManyToMany(mappedBy = "facultades")
 //    @JsonIgnoreProperties("facultades")
 //    private Set<Alumno> alumnos;
-
     public Long getIdFacultad() {
         return idFacultad;
     }
@@ -61,7 +60,7 @@ public class Facultad implements Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
     public List<Alumno> getAlumnos() {
         return alumnos;
     }

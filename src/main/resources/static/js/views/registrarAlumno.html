@@ -28,13 +28,19 @@ and open the template in the editor.
 
     <p>
         <label>Seleccione una facultad:</label>
-        <select ng-options="facultad as facultad.nombre for facultad in facultades" ng-model="newFacultad">
+        <select ng-options="facultad.idFacultad as facultad.nombre for facultad in facultades" ng-model="newAlumno.facultad.idFacultad">
         </select>
     </p>
 
-    <button id="addBtn" class="btn-success" ng-click="sendAlumno()">Añadir Alumno</button>
+    <p>
+        <button id="addBtn" class="btn-success" ng-click="sendAlumno()">Añadir Alumno</button>
+    </p>
 </div>
 
-<h4>{{msg}}</h4>
+<div class="col-md-12">
+    <p></p>
+    <h4>{{msg}}</h4>
+</div>
+
 
 

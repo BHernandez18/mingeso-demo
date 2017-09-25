@@ -1,12 +1,16 @@
-var app = angular.module('mingeso-demo',['ngRoute']);
+var app = angular.module('mingeso-demo', ['ngRoute']);
 
-app.config(function($routeProvider){
+app.config(function ($routeProvider) {
     $routeProvider
-        .when('/registrarAlumno',{
-            templateUrl: 'js/views/registrarAlumno.html',
-            controller: 'RegisterController'
-        })
-        .otherwise({
-            redirectTo: '/index'
-        });
+            .when('/registrarAlumnos', {
+                templateUrl: 'js/views/registrarAlumno.html',
+                controller: 'RegisterController'
+            })
+            .when('/buscarAlumnos', {
+                templateUrl: 'js/views/mostrarAlumnos.html',
+                controller: 'AlumnoController'
+            })
+            .otherwise({
+                redirectTo: '/index'
+            });
 });
