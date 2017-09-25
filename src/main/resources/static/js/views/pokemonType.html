@@ -1,0 +1,16 @@
+<div class="panel">
+    <h1>Menu: Tipos</h1>
+    <div>
+        <h2>Pokemon por tipo:</h2>
+    </div>
+    <div>
+        <ul>
+            <li ng-repeat="type in types"><a ng-click="showByType(type.typeId)">{{ type.typeName | capitalize }}</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <li ng-repeat="pokemon in pokemons"><b>{{ pokemon.name | capitalize }}</b>: <em>{{ pokemon.description | lowercase }}</em></li>
+        </ul>
+    </div>
+</div>

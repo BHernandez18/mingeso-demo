@@ -1,0 +1,44 @@
+<div class="panel col-md-12">
+    <h1>Menu: Pokemon</h1>
+    <div class="col-md-12">
+        <h2>Extingir especie Pokemon:</h2>
+        <select ng-model="deletedPokemon">
+            <option ng-repeat="pokemon in pokemons" value="{{ pokemon._links.self.href }}">{{ pokemon.name }}</option>
+        </select>
+        <input type="button" ng-click="deletePokemon()" value="Eliminar de la tierra">
+    </div>
+    <div class="col-md-12">
+        <h2>Agregar Pokemon</h2>
+        <div class="row col-md-8">
+            <h3>Nombre:</h3>
+            <input type="text" ng-model="newPokemon.name">
+        </div>
+        <div class="row col-md-8">
+            <h3>Tipo primario:</h3>
+            <div ng-repeat="type in types" style="float:left; margin:10px;">
+                <input type="radio" ng-model="newPokemon.primaryType" value="{{ type.typeId }}">{{ type.typeName | capitalize }}
+            </div>
+        </div>
+        <div class="row col-md-8">
+            <h3>Tipo secundario:</h3>
+            <div style="float:left; margin:10px;">
+                <input type="radio" ng-model="newPokemon.secondaryType" value="0">Ninguno
+            </div>
+            <div ng-repeat="type in types" style="float:left; margin:10px;">
+                <input type="radio" ng-model="newPokemon.secondaryType" value="{{ type.typeId }}">{{ type.typeName | capitalize }}
+            </div>
+        </div>
+        <div class="row col-md-8">
+            <h3>Descripción:</h3>
+            <textarea ng-model="newPokemon.description"></textarea>
+        </div>
+        <div class="row col-md-8">
+            <h3>Evoluciona de:</h3>
+            <select ng-model="newPokemon.evolveFrom">
+                <option value="0" selected="true">Ninguno</option>
+                <option ng-repeat="pokemon in pokemons" value="{{ pokemon._links.self.href }}">{{ pokemon.name | capitalize }}</option>
+            </select>
+        </div>
+        <input ng-click="send()" type="button" value="Agregar">
+    </div>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<div class="col-md-12">
+    <p>
+        <label for="rut">RUT:</label>
+        <input id="rut" ng-model="newAlumno.rut" type="text" />
+    </p>
+
+    <p>
+        <label for="nombre">Nombre:</label>
+        <input id="nombre" ng-model="newAlumno.nombre" type="text" />
+    </p>
+
+    <p>
+        <label for="correo">Correo electronico:</label>
+        <input id="correo" ng-model="newAlumno.correo" type="email" />
+    </p>
+
+    <p>
+        <label for="ingreso">Año de ingreso:</label>
+        <input id="ingreso" ng-model="newAlumno.ingreso" type="number" />
+    </p>
+
+    <p>
+        <label>Seleccione una facultad:</label>
+        <select ng-options="facultad as facultad.nombre for facultad in facultades" ng-model="newFacultad">
+        </select>
+    </p>
+
+    <button id="addBtn" class="btn-success" ng-click="sendAlumno()">Añadir Alumno</button>
+</div>
+
+<h4>{{msg}}</h4>
+
+
