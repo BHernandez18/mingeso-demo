@@ -15,7 +15,8 @@ and open the template in the editor.
     </p>
 </div>
 
-<div class="container" ng-show="alumnos != null">
+<!--
+<div class="container" ng-show="alumnos !== null">
     <table>
         <thead>
             <tr>
@@ -23,7 +24,7 @@ and open the template in the editor.
                 <th>Nombre</th>
                 <th>Correo Electronico</th>
                 <th>Ingreso</th>
-                
+
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,18 @@ and open the template in the editor.
                 <td>{{alumno.ingreso}}</td>
             </tr>
         </tbody>
+    </table>
+</div>
+-->
+
+<div class="col-md-12">
+    <table ng-table="vm.tableParams" class="table table-bordered" show-filter="false">
+        <tr ng-repeat="user in alumnos">
+            <td title="'RUT'">{{user.rut}}</td>
+            <td title="'Nombre'">{{user.nombre}}</td>
+            <td title="'Correo Electronico'">{{user.correo}}</td>
+            <td title="'Ingreso'">{{user.ingreso}}</td>
+        </tr>
     </table>
 </div>
 

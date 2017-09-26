@@ -1,4 +1,4 @@
-var app = angular.module('mingeso-demo', ['ngRoute']);
+var app = angular.module('mingeso-demo', ['ngRoute', 'ngTable']);
 
 app.config(function ($routeProvider) {
     $routeProvider
