@@ -97,5 +97,9 @@ public class AlumnoController {
     public ResponseEntity<Object> delete(@PathVariable String id) {
         return null;
     }
+    
+    public static int suma(int x, int y) {
+        return x + y;
+    }
 
 }
