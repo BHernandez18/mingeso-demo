@@ -25,8 +25,10 @@ public class Facultad implements Serializable {
     public Facultad() {
     }
 
-    public Facultad(String nombre) {
+    public Facultad(Long idFacultad, String nombre, List<Alumno> alumnos) {
+        this.idFacultad = idFacultad;
         this.nombre = nombre;
+        this.alumnos = alumnos;
     }
 
     @Id

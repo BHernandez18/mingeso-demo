@@ -21,6 +21,18 @@ import javax.validation.constraints.NotNull;
 @Table(name = "alumno")
 public class Alumno implements Serializable {
 
+    public Alumno() {
+    }
+
+    public Alumno(Long idAlumno, String rut, String nombre, String correo, int ingreso, Facultad facultad) {
+        this.idAlumno = idAlumno;
+        this.rut = rut;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.ingreso = ingreso;
+        this.facultad = facultad;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_alumno")
